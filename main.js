@@ -41,14 +41,11 @@ ipcMain.on('close', () => {
 
  
  // Use default printing options
-      printedWin.webContents.print({ silent: false }).then((success)=>{
-        console.log(success);
-        dialog.showErrorBox('Title', success) 
-        })
-        .catch((err)=>{
-        console.log(err)
-        dialog.showErrorBox('Title', err) 
-        });
+      printedWin.webContents.print({ silent: false },(status,f)=>{
+  
+        dialog.showErrorBox('s', status) 
+        dialog.showErrorBox('f', f) 
+   });    
 });
 
 
